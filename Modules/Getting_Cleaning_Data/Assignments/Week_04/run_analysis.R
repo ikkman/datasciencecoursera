@@ -1,6 +1,5 @@
-#Loading library packages
+#Loading required packages
 library(dplyr)
-library(tidyr)
 
 #Reading Common Dataset
 activities <- read.table("./data/activity_labels.txt", header = FALSE)
@@ -16,14 +15,18 @@ test <- read.table("./data/test/X_test.txt", header = FALSE)
 test <- tbl_df(test)
 
 #Naming Train Dataset + Activity
+subjects <- read.table("./data/train/subject_train.txt", header = FALSE)
 labels <- read.table("./data/train/y_train.txt", header = FALSE)
 colnames(train) <- feature_names
 train <- cbind(train, activity = labels$V1)
+train <- cbind(train, subject = subjects$V1)
 
 #Naming Test Dataset + Activity
+subjects <- read.table("./data/test/subject_test.txt", header = FALSE)
 labels <- read.table("./data/test/y_test.txt", header = FALSE)
 colnames(test) <- feature_names
 test <- cbind(test, activity = labels$V1)
+test <- cbind(test, subject = subjects$V1)
 
 #Merge Train & Test into a single dataset
 merged_traintest <- rbind(train, test)
@@ -34,8 +37,8 @@ selected_columns <- grep("mean|std",
                          ignore.case = TRUE, 
                          value = TRUE)
 
-selected_traintest <- merged_traintest[, c(selected_columns, "activity")]
+selected_traintest <- merged_traintest[, c(selected_columns, "activity", "subject")]
 
 #From independent tidy data based on average of all variables by each activity
-result <- selected_traintest %>% group_by(activity) %>% summarize_all("mean")
+result <- selected_traintest %>% group_by(subject, activity) %>% summarize_all("mean")
 result
