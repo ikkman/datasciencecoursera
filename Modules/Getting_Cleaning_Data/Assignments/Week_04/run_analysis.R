@@ -39,7 +39,7 @@ selected_columns <- grep("mean|std",
 
 selected_traintest <- merged_traintest[, c(selected_columns, "activity", "subject")]
 
-#From independent tidy data based on average of all variables by each activity
+#From independent tidy data based on average of all variables by each subject-activity
 result <- selected_traintest %>% group_by(subject, activity) %>% summarize_all("mean")
 result
 
