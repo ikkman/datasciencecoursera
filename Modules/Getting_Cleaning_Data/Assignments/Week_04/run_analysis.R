@@ -43,5 +43,5 @@ selected_traintest <- merged_traintest[, c(selected_columns, "activity", "subjec
 result <- selected_traintest %>% group_by(subject, activity) %>% summarize_all("mean")
 result
 
-#Save the tidy data as a csv file
-write.csv(result, "tidy.csv", row.names = FALSE)
+#Save the tidy data as a txt file
+write.table(result, "tidy.txt", row.names = FALSE)
