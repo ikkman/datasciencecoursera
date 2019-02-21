@@ -14,18 +14,20 @@ train <- tbl_df(train)
 test <- read.table("./data/test/X_test.txt", header = FALSE)
 test <- tbl_df(test)
 
-#Naming Train Dataset + Activity
+#Naming Train Dataset + Subject & Activity Variables
 train_subjects <- read.table("./data/train/subject_train.txt", header = FALSE)
 train_activities <- read.table("./data/train/y_train.txt", header = FALSE)
 colnames(train) <- feature_names
-train <- cbind(train, activity = train_activities$V1)
+train_activities_factors <- factor(train_activities$V1, labels = activities$V2)
+train <- cbind(train, activity = train_activities_factors)
 train <- cbind(train, subject = train_subjects$V1)
 
-#Naming Test Dataset + Activity
+#Naming Test Dataset + Subject & Activity Variables
 test_subjects <- read.table("./data/test/subject_test.txt", header = FALSE)
 test_activities <- read.table("./data/test/y_test.txt", header = FALSE)
 colnames(test) <- feature_names
-test <- cbind(test, activity = test_activities$V1)
+test_activities_factors <- factor(test_activities$V1, labels = activities$V2)
+test <- cbind(test, activity = test_activities_factors)
 test <- cbind(test, subject = test_subjects$V1)
 
 #Merge Train & Test into a single dataset
