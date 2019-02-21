@@ -1,9 +1,9 @@
 Week 04 Project Course
 ===========
 
-This project demonstrates how to collect, work with, and clean a dataset. It prepares a tidy data that can be used later for analysis. Based on an experiment of human activity recognition made by Davide Anguita, Alessandro Ghio and Luca Oneto from University of Genova with Xavier Parra and Jorge L. Reyes-Ortiz Universitat Politecnica de Catalunya. 30 volunteers performed different activities (6 types) while wearing a smartphone. The smartphone captured various data about their movements.
+This project demonstrates how to collect, work with, and clean a dataset. It prepares a tidy data that can be used later for analysis. Based on an experiment of human activity recognition made by Davide Anguita, Alessandro Ghio and Luca Oneto from University of Genova with Xavier Parra and Jorge L. Reyes-Ortiz Universitat Politecnica de Catalunya. 30 volunteers performed different 6 activities (Walking, Up-Stairs Walking, Down-Stairs Walking, Sitting, Standing and Laying) while wearing a smartphone. The smartphone captured various data about their movements.
 
-The captured data were collected from the accelerometers and gyroscope using the Samsung Galaxy S smartphone. A full description of the captured data and activities are available at the following site:
+The captured activity data were collected from the accelerometers and gyroscope using the Samsung Galaxy S smartphone. A full description of the captured data and activities are available at the following site:
 
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
