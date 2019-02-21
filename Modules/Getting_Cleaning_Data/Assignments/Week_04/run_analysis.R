@@ -15,18 +15,18 @@ test <- read.table("./data/test/X_test.txt", header = FALSE)
 test <- tbl_df(test)
 
 #Naming Train Dataset + Activity
-subjects <- read.table("./data/train/subject_train.txt", header = FALSE)
-labels <- read.table("./data/train/y_train.txt", header = FALSE)
+train_subjects <- read.table("./data/train/subject_train.txt", header = FALSE)
+train_activities <- read.table("./data/train/y_train.txt", header = FALSE)
 colnames(train) <- feature_names
-train <- cbind(train, activity = labels$V1)
-train <- cbind(train, subject = subjects$V1)
+train <- cbind(train, activity = train_activities$V1)
+train <- cbind(train, subject = train_subjects$V1)
 
 #Naming Test Dataset + Activity
-subjects <- read.table("./data/test/subject_test.txt", header = FALSE)
-labels <- read.table("./data/test/y_test.txt", header = FALSE)
+test_subjects <- read.table("./data/test/subject_test.txt", header = FALSE)
+test_activities <- read.table("./data/test/y_test.txt", header = FALSE)
 colnames(test) <- feature_names
-test <- cbind(test, activity = labels$V1)
-test <- cbind(test, subject = subjects$V1)
+test <- cbind(test, activity = test_activities$V1)
+test <- cbind(test, subject = test_subjects$V1)
 
 #Merge Train & Test into a single dataset
 merged_traintest <- rbind(train, test)
@@ -43,5 +43,5 @@ selected_traintest <- merged_traintest[, c(selected_columns, "activity", "subjec
 result <- selected_traintest %>% group_by(subject, activity) %>% summarize_all("mean")
 result
 
-# Save the tidy data as a csv file
+#Save the tidy data as a csv file
 write.csv(result, "tidy.csv", row.names = FALSE)
