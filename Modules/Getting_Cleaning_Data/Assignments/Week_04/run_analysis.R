@@ -19,16 +19,16 @@ train_subjects <- read.table("./data/train/subject_train.txt", header = FALSE)
 train_activities <- read.table("./data/train/y_train.txt", header = FALSE)
 colnames(train) <- feature_names
 train_activities_factors <- factor(train_activities$V1, labels = activities$V2)
-train <- cbind(train, activity = train_activities_factors)
-train <- cbind(train, subject = train_subjects$V1)
+train <- cbind(train, Activity = train_activities_factors)
+train <- cbind(train, Subject = train_subjects$V1)
 
 #Naming Test Dataset + Subject & Activity Variables
 test_subjects <- read.table("./data/test/subject_test.txt", header = FALSE)
 test_activities <- read.table("./data/test/y_test.txt", header = FALSE)
 colnames(test) <- feature_names
 test_activities_factors <- factor(test_activities$V1, labels = activities$V2)
-test <- cbind(test, activity = test_activities_factors)
-test <- cbind(test, subject = test_subjects$V1)
+test <- cbind(test, Activity = test_activities_factors)
+test <- cbind(test, Subject = test_subjects$V1)
 
 #Merge Train & Test into a single dataset
 merged_traintest <- rbind(train, test)
@@ -39,10 +39,28 @@ selected_columns <- grep("mean|std",
                          ignore.case = TRUE, 
                          value = TRUE)
 
-selected_traintest <- merged_traintest[, c(selected_columns, "activity", "subject")]
+selected_traintest <- merged_traintest[, c(selected_columns, "Activity", "Subject")]
+
+#Re-Naming for selected dataset varibales
+headers <- names(selected_traintest)
+headers <- gsub("-", "", headers)
+headers <- gsub("\\(", "", headers)
+headers <- gsub("\\)", "", headers)
+headers <- gsub(",", "", headers)
+headers <- gsub("Acc", "Accelerometer", headers)
+headers <- gsub("Gyro", "Gyroscope", headers)
+headers <- gsub("mean", "Mean", headers)
+headers <- gsub("std", "StandardDeviation", headers)
+headers <- gsub("Mag", "Magnitude", headers)
+headers <- gsub("BodyBody", "Body", headers)
+headers <- gsub("angle", "Angle", headers)
+headers <- gsub("gravity", "Gravity", headers)
+headers <- gsub("^t{1}", "Time", headers)
+headers <- gsub("^f{1}", "Frequency", headers)
+names(selected_traintest) <- headers
 
 #From independent tidy data based on average of all variables by each subject-activity
-result <- selected_traintest %>% group_by(subject, activity) %>% summarize_all("mean")
+result <- selected_traintest %>% group_by(Subject, Activity) %>% summarize_all("mean")
 result
 
 #Save the tidy data as a txt file
