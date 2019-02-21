@@ -42,3 +42,6 @@ selected_traintest <- merged_traintest[, c(selected_columns, "activity", "subjec
 #From independent tidy data based on average of all variables by each activity
 result <- selected_traintest %>% group_by(subject, activity) %>% summarize_all("mean")
 result
+
+# Save the tidy data as a csv file
+write.csv(result, "tidy.csv", row.names = FALSE)
