@@ -50,7 +50,7 @@ data                      Folder
 
 ### Script
 
-The script performs the next actions** in order to produce a tidy dataset.
+The script performs the next actions in order to produce a tidy dataset.
 
 1. Load the data.
 2. Merges the training and the test sets into one single dataset.
@@ -64,4 +64,3 @@ The output of the R script is saved as a TXT file, called [tidy.txt](tidy.txt).
 More details about the data and the analysis could be found in the [code book](CODEBOOK.md).
 
 (*)  : Only the involved datasets had been illustrated from the extracted zip file
-(**) : Actions 4, 5 applied in reverse order.
