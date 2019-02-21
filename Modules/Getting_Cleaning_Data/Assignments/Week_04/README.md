@@ -63,5 +63,5 @@ The output of the R script is saved as a TXT file, called [tidy.txt](tidy.txt).
 
 More details about the data and the analysis could be found in the [code book](CODEBOOK.md).
 
-*  : Only the involved datasets had been illustrated from the extracted zip file
-** : Actions 4, 5 applied in reverse order.
+(*)  : Only the involved datasets had been illustrated from the extracted zip file
+(**) : Actions 4, 5 applied in reverse order.
