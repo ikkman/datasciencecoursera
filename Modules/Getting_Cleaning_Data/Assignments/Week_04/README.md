@@ -49,6 +49,6 @@ data                      Folder
 ```
 *: Only the involved datasets had been illustrated from the extracted zip file
 
-The output of the R script is saved as a CSV file, called [tidy.csv](tidy.csv).
+The output of the R script is saved as a TXT file, called [tidy.txt](tidy.txt).
 
 More details about the data and the analysis could be found in the [code book](CODEBOOK.md).
