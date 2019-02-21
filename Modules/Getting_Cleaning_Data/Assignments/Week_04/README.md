@@ -33,6 +33,7 @@ To be able to execute the script, you need to perform the following:
 FOLDER_HIERARCHY          DESCRIPTION
 
 run_analysis.R            Script
+tidy.csv                  Output
 data                      Folder
 |_ activity_labels.txt    Links the class labels with their activity name.
 |_ features.txt           List of all features
@@ -43,8 +44,11 @@ data                      Folder
 |_ test                   Sub-folder
    |_ subject_test.txt    Identifies the subject who performed the activity within test set
    |_ X_test.txt          Test set.
-   |_ y_test.txt          Test labels set.
-tidy.csv                  Output   
+   |_ y_test.txt          Test labels set.   
    
 ```
 *: Only the involved datasets had been illustrated from the extracted zip file
+
+The output of the R script is saved as a CSV file, called [tidy.csv](tidy.csv).
+
+More details about the data and the analysis could be found in the [code book](CODEBOOK.md).
