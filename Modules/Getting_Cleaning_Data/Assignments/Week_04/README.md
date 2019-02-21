@@ -47,8 +47,21 @@ data                      Folder
    |_ y_test.txt          Test labels set.   
    
 ```
-*: Only the involved datasets had been illustrated from the extracted zip file
+
+### Script
+
+The script performs the next actions** in order to produce a tidy dataset.
+
+1. Load the data.
+2. Merges the training and the test sets into one single dataset.
+3. Extracts measurements relevant to mean and standard deviation for each measurement.
+4. Uses descriptive activity names to name the activities in the data set.
+5. Appropriately labels the data set with descriptive variable names.
+6. Creates an independent tidy dataset with the average of each variable based on activity-subject couple.
 
 The output of the R script is saved as a TXT file, called [tidy.txt](tidy.txt).
 
 More details about the data and the analysis could be found in the [code book](CODEBOOK.md).
+
+*  : Only the involved datasets had been illustrated from the extracted zip file
+** : Actions 4, 5 applied in reverse order.
